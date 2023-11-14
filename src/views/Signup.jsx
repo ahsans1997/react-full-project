@@ -5,7 +5,7 @@ import { useStateContext } from "../contexts/ContextProvider";
 
 const Signup = () => {
 
-    const {setUser, settoken} = useStateContext();
+    const {setToken} = useStateContext();
 
     const nameRef = useRef();
     const emailRef = useRef();
@@ -22,10 +22,10 @@ const Signup = () => {
         }
 
 
-        axiosClient.post('/signup', payload)
+        axiosClient.post('/register', payload)
         .then(({data})=>{
-            setUser(data.user)
-            settoken(data.token)
+            console.log(data);
+            setToken(data.access_token)
         })
         .catch(error => {
             const response = error.response;

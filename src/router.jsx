@@ -6,6 +6,8 @@ import Users from "./views/Users";
 import DefaultLayout from "./Components/Layouts/DefaultLayout";
 import GuestLayout from "./Components/Layouts/GuestLayout";
 import Error from "./views/Error";
+import Roles from "./views/Roles";
+import UserRole from "./views/UserRole";
 
 const router = createBrowserRouter([
     {
@@ -22,8 +24,19 @@ const router = createBrowserRouter([
             },
             {
                 path: "/users",
-                element: <Users />
+                element: <Users />,
+                children: [
+                    {
+                        path: "userrole/:id",
+                        element: <UserRole />
+                    },
+                ],
             },
+            {
+                path: "/roles",
+                element: <Roles />
+            },
+            
         ],
     },
     {
